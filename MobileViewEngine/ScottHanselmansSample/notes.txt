@@ -1,0 +1,14 @@
+This directory contains sample of ViewEngine implementation suggested by Scott here:
+http://www.hanselman.com/blog/ABetterASPNETMVCMobileDeviceCapabilitiesViewEngine.aspx
+
+The solution still is broken in MVC 2.0 and 3.0 RTM.
+You can repeat it by your self:
+Mak shulre that view caching is turned by compilation debug option set to fale:
+     <compilation debug="false" ..
+1. Restart the web server to flash cache.
+2. Go to the web site with desktop browser. The desktop version is displayed.
+3. Go to the web site from iPhone. (you can use User Agent swithcer plug-in for FireFox)
+//Expected: The iPhone view to display
+//Actual: The desktop view is displayed
+
+That happens becaus browser view was already cached.
