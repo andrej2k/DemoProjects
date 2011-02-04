@@ -1,0 +1,5 @@
+<Configuration>
+  <NamespaceFolders>
+    <SkipFolder>2C1B48F1-AB2C-4FBF-8672-B3332B4F18BE/d:MobileViewEngine</SkipFolder>
+  </NamespaceFolders>
+</Configuration>

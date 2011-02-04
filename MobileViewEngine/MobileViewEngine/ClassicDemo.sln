@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassicDemo", "ClassicDemo\ClassicDemo.csproj", "{2C1B48F1-AB2C-4FBF-8672-B3332B4F18BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileViewEngineTests", "MobileViewEngineTests\MobileViewEngineTests.csproj", "{2633892B-ACEA-451E-8329-E897F17500CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C1B48F1-AB2C-4FBF-8672-B3332B4F18BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1B48F1-AB2C-4FBF-8672-B3332B4F18BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1B48F1-AB2C-4FBF-8672-B3332B4F18BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1B48F1-AB2C-4FBF-8672-B3332B4F18BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2633892B-ACEA-451E-8329-E897F17500CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2633892B-ACEA-451E-8329-E897F17500CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2633892B-ACEA-451E-8329-E897F17500CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2633892B-ACEA-451E-8329-E897F17500CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
