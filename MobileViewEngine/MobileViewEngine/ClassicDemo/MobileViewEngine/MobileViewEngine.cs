@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,24 +29,30 @@ namespace ClassicDemo
                 controllerContext.HttpContext.Items[Constants.DebugViewEngineContentKey] = viewName + " - " + useCache;
             }
 
-            foreach (IDeviceRule deviceRule in deviceRules)
+            IEnumerable<RuleResult> deviceRuleResults = GetDeviceRuleResultsInReverseOrder(controllerContext, viewName, masterName);
+            foreach (RuleResult ruleResult in deviceRuleResults)
             {
-                RuleResult ruleResult = deviceRule.IsRightDevice(controllerContext, viewName, masterName);
-                if (ruleResult.DeviceIsRight)
+                FindViewResult findViewSearchResult = CallOriginalViewEngineAndCheckIfViewExists(controllerContext,
+                                                                                                    ruleResult.ViewName,
+                                                                                                    masterName,
+                                                                                                    useCache);
+                if ((findViewSearchResult.ViewExists) || (!ruleResult.AllowFallback))
                 {
-                    FindViewResult findViewSearchResult = CallOriginalViewEngineAndCheckIfViewExists(controllerContext,
-                                                                                                     ruleResult.ViewName,
-                                                                                                     masterName,
-                                                                                                     useCache);
-                    if ((findViewSearchResult.ViewExists) || (!ruleResult.AllowFallback))
-                    {
-                        return findViewSearchResult.ViewEngineResult;
-                    }
+                    return findViewSearchResult.ViewEngineResult;
                 }
             }
 
             //if device does not fit to the rules or views specified by rules were not found, then call original viewEngine without changes
             return OriginalViewEngine.FindView(controllerContext, viewName, masterName, useCache);
+        }
+
+        private IEnumerable<RuleResult> GetDeviceRuleResultsInReverseOrder(ControllerContext controllerContext, string viewName, string masterName)
+        {
+            List<RuleResult> ruleResults = deviceRules.Select(deviceRule => deviceRule.IsRightDevice(controllerContext, viewName, masterName))
+                .TakeWhile(ruleResult => ruleResult.DeviceIsRight)
+                .ToList();
+            ruleResults.Reverse();
+            return ruleResults;
         }
 
         public ViewEngineResult FindPartialView(ControllerContext controllerContext,
@@ -67,7 +74,7 @@ namespace ClassicDemo
 
         private bool ViewExistsOutOfCache(ControllerContext controllerContext, string viewName, string masterName)
         {
-            //TODO: we can add cache here to avoid call of original view with useCache set to false
+            //TODO: we can add custom cache here to avoid call of original view with useCache set to false
             ViewEngineResult nonCachedResult = OriginalViewEngine.FindView(controllerContext,
                                                                            viewName,
                                                                            masterName,

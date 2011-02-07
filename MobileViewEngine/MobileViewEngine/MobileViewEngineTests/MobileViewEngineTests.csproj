@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserCapabilitiesStub.cs" />
+    <Compile Include="DeviceRuleHelperTests.cs" />
     <Compile Include="MobileDeviceRuleTests.cs" />
     <Compile Include="MobileViewEngineTests.cs" />
     <Compile Include="PlatformSpecificRuleTests.cs" />

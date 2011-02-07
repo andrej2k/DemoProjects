@@ -77,10 +77,11 @@
     <Compile Include="MobileViewEngine\HttpContextBrowserCapabilities.cs" />
     <Compile Include="MobileViewEngine\IBrowserCapabilities.cs" />
     <Compile Include="MobileViewEngine\IDeviceRule.cs" />
-    <Compile Include="MobileViewEngine\MobileDeviceRule.cs" />
+    <Compile Include="MobileViewEngine\MobileDeviceRules\DeviceRulesHelper.cs" />
+    <Compile Include="MobileViewEngine\MobileDeviceRules\MobileDeviceRule.cs" />
     <Compile Include="MobileViewEngine\MobileViewEngineHelper.cs" />
     <Compile Include="MobileViewEngine\MobileViewEngine.cs" />
-    <Compile Include="MobileViewEngine\PlatformSpecificRule.cs" />
+    <Compile Include="MobileViewEngine\MobileDeviceRules\PlatformSpecificRule.cs" />
     <Compile Include="MobileViewEngine\RuleResult.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -17,31 +17,6 @@ namespace MobileViewEngineTests
         }
 
         [Test]
-        public void CanAddMobilePathToShortIndexName()
-        {
-            Assert.That(MobileDeviceRule.AddPathToViewName("Index", "Mobile/"), Is.EqualTo("Mobile/Index"));
-        }
-
-        [Test]
-        public void CanAddMobilePathToSpecifIndexName()
-        {
-            Assert.That(MobileDeviceRule.AddPathToViewName("~/Views/Account/LogOn.aspx", "Mobile/"),
-                        Is.EqualTo("~/Views/Account/Mobile/LogOn.aspx"));
-        }
-
-        [Test]
-        public void CanAddMobilePathToSpecifIndexNameShort()
-        {
-            Assert.That(MobileDeviceRule.AddPathToViewName("~/LogOn.aspx", "Mobile/"), Is.EqualTo("~/Mobile/LogOn.aspx"));
-        }
-
-        [Test]
-        public void CanAddMobilePathToViewNameFileNameOnly()
-        {
-            Assert.That(MobileDeviceRule.AddPathToViewName("LogOn.aspx", "Mobile/"), Is.EqualTo("Mobile/LogOn.aspx"));
-        }
-
-        [Test]
         public void ReturnFalseOnNonMobileBrowser()
         {
             browserCapabilities.IsMobileDevice = false;

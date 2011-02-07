@@ -9,7 +9,7 @@ namespace ClassicDemo
 
         public static IList<string> SupportedDevicePlatformsWithViewPath
         {
-            get { return new List<string> {"Android", "IPhone" }; }
+            get { return new List<string> {"Android", "IPhone"}; }
         }
 
         public static void AddMobileViewEngine<T>(this ViewEngineCollection ves) where T : IViewEngine, new()
@@ -23,9 +23,9 @@ namespace ClassicDemo
             //Order is important!!!
             return new List<IDeviceRule>
                        {
+                           new MobileDeviceRule(browserCapabilities),
                            new PlatformSpecificRule(browserCapabilities,
                                                     SupportedDevicePlatformsWithViewPath),
-                           new MobileDeviceRule(browserCapabilities)
                        };
         }
     }
