@@ -4,6 +4,6 @@
     {
         public bool DeviceIsRight;
         public bool AllowFallback;
-        public string ViewSubPath;
+        public string ViewName;
     }
 }

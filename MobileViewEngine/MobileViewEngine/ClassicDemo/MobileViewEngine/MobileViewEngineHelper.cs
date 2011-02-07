@@ -7,9 +7,9 @@ namespace ClassicDemo
     {
         //public const string MobileDeviceSubPath = "Mobile/";
 
-        public static IDictionary<string, string> SupportedDevicePlatformsWithViewPath
+        public static IList<string> SupportedDevicePlatformsWithViewPath
         {
-            get { return new Dictionary<string, string> {{"Android", "Mobile/Android/"}, {"IPhone", "Mobile/IPhone/"}}; }
+            get { return new List<string> {"Android", "IPhone" }; }
         }
 
         public static void AddMobileViewEngine<T>(this ViewEngineCollection ves) where T : IViewEngine, new()

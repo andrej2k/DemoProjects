@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Web;
 using System.Web.Mvc;
 
@@ -31,12 +30,11 @@ namespace ClassicDemo
 
             foreach (IDeviceRule deviceRule in deviceRules)
             {
-                RuleResult ruleResult = deviceRule.IsRightDevice(controllerContext);
+                RuleResult ruleResult = deviceRule.IsRightDevice(controllerContext, viewName, masterName);
                 if (ruleResult.DeviceIsRight)
                 {
-                    string changedViewName = AddPathToViewName(viewName, ruleResult.ViewSubPath);
                     FindViewResult findViewSearchResult = CallOriginalViewEngineAndCheckIfViewExists(controllerContext,
-                                                                                                     changedViewName,
+                                                                                                     ruleResult.ViewName,
                                                                                                      masterName,
                                                                                                      useCache);
                     if ((findViewSearchResult.ViewExists) || (!ruleResult.AllowFallback))
@@ -65,24 +63,6 @@ namespace ClassicDemo
         private static bool IsResultEmpty(ViewEngineResult result)
         {
             return result == null || result.View == null;
-        }
-
-        public static string AddPathToViewName(string viewName, string pathToCombine)
-        {
-            string combinedViewName;
-            if (VirtualPathUtility.IsAppRelative(viewName))
-            {
-                string directory = VirtualPathUtility.GetDirectory(viewName);
-                string newDirectory = VirtualPathUtility.Combine(directory, pathToCombine);
-                string fileName = Path.GetFileName(viewName); //VirtualPathUtility.GetFileName does not work in unittest environment
-                combinedViewName = VirtualPathUtility.Combine(newDirectory, fileName);
-            }
-            else
-            {
-                //simple view name: "Index" => "Mobile/Index"
-                combinedViewName = pathToCombine + viewName;
-            }
-            return combinedViewName;
         }
 
         private bool ViewExistsOutOfCache(ControllerContext controllerContext, string viewName, string masterName)

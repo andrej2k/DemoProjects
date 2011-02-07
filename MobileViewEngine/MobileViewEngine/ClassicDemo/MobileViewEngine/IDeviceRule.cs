@@ -4,6 +4,6 @@ namespace ClassicDemo
 {
     public interface IDeviceRule
     {
-        RuleResult IsRightDevice(ControllerContext controllerContext);
+        RuleResult IsRightDevice(ControllerContext controllerContext, string viewName, string masterName);
     }
 }

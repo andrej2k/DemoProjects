@@ -38,32 +38,11 @@ namespace MobileViewEngineTests
             browserCapabilities = new BrowserCapabilitiesStub();
             deviceRules = MobileViewEngineHelper.CreateDeviceRules(browserCapabilities);
             mobileViewEngine = new MobileViewEngine(originalViewEngineStub, deviceRules);
+            
+            IList<IViewEngine> myList = new List<IViewEngine>();
+            myList.Add(mobileViewEngine);
+
             viewEngineCollection = new ViewEngineCollection {mobileViewEngine};
-        }
-
-        [Test]
-        public void CanAddMobilePathToShortIndexName()
-        {
-            Assert.That(MobileViewEngine.AddPathToViewName("Index", "Mobile/"), Is.EqualTo("Mobile/Index"));
-        }
-
-        [Test]
-        public void CanAddMobilePathToSpecifIndexName()
-        {
-            Assert.That(MobileViewEngine.AddPathToViewName("~/Views/Account/LogOn.aspx", "Mobile/"),
-                        Is.EqualTo("~/Views/Account/Mobile/LogOn.aspx"));
-        }
-
-        [Test]
-        public void CanAddMobilePathToSpecifIndexNameShort()
-        {
-            Assert.That(MobileViewEngine.AddPathToViewName("~/LogOn.aspx", "Mobile/"), Is.EqualTo("~/Mobile/LogOn.aspx"));
-        }
-
-        [Test]
-        public void CanAddMobilePathToViewNameFileNameOnly()
-        {
-            Assert.That(MobileViewEngine.AddPathToViewName("LogOn.aspx", "Mobile/"), Is.EqualTo("Mobile/LogOn.aspx"));
         }
 
         [Test]
