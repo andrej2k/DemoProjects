@@ -5,8 +5,6 @@ namespace ClassicDemo
 {
     public static class MobileViewEngineHelper
     {
-        //public const string MobileDeviceSubPath = "Mobile/";
-
         public static IList<string> SupportedDevicePlatformsWithViewPath
         {
             get { return new List<string> {"Android", "IPhone"}; }
